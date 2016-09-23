@@ -1,0 +1,138 @@
+<%- model_class = Loan -%>
+<p id="notice"><%= notice %></p>
+<div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Consulta de Registro </h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to 'Nueva solicitud de Prestamos', new_loan_path %>
+                        </li>
+                        <li><%= link_to 'Listar Pagos', pagos_path%>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                  <br />
+                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+
+                  <!--div class="row tile_count">
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i></span>
+              <div class="count"><%= @loan.employee_id %></div>
+              <span class="count_bottom"><i class="green"> OpeFlow</i> </span>
+            </div>
+          </div-->
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cliente
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.employee.first_name%> <%= @loan.employee.p_last_name %> <%= @loan.employee.m_last_name %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Salario
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.net_salary %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Interes
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value=" <%= @loan.interest %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Credito maximo
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.max_credit %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Periodo
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.period %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Capital requerida
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.capital_requisition %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Fecha de requisición
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.date_requisition %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Capital a pagar
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.capital_to_pay %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Balance
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.balance %>"> 
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Status
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" disabled="true" class="form-control col-md-7 col-xs-12" value="<%= @loan.status %>"> 
+                      </div>
+                    </div>
+
+                     <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <%= link_to t('.Editar', :default => t("helpers.links.Editar")),
+                  edit_loan_path(@loan),
+                  :class => 'btn btn-primary' %>
+                  <%= link_to t('.Regresar', :default => t("helpers.links.Regresar")),
+                  loans_path,
+                  :class => 'btn btn-primary' %>
+                      </div>
+                    </div>
+
+                  </form>            
+                </div>
+                </div>
+                </div>
+                </div>

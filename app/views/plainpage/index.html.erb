@@ -1,0 +1,55 @@
+<div class="x_panel" style="height:100%;">
+  <div class="x_title">
+    <h2>Dashboard</h2>
+    <ul class="nav navbar-right panel_toolbox">
+      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Settings 1</a>
+          </li>
+          <li><a href="#">Settings 2</a>
+          </li>
+        </ul>
+      </li>
+      <li><a class="close-link"><i class="fa fa-close"></i></a>
+      </li>
+    </ul>
+    <div class="clearfix"></div></div>
+
+ <div style="text-align: center">
+<div class="row tile_count">
+ <div class="col-md-2 col-sm-2 col-xs-6 tile_stats_count">
+ <span class="count_top"><i class="fa fa-building"></i>Total Empresas</span>
+ <div class="count"><%=@total_comp%></div>
+ <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><%=@porcentaje_comp%>% </i>Mes pasado</span>
+ </div>
+<div class="col-md-2 col-sm-2 col-xs-6 tile_stats_count">
+ <span class="count_top"><i class="fa fa-suitcase"></i>Total Sub empresas</span>
+ <div class="count"><%=@total_subcom%></div>
+ <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><%=@porcentaje_subcom%>%</i>Mes pasado</span>
+ </div>
+<div class="col-md-2 col-sm-2 col-xs-6 tile_stats_count">
+ <span class="count_top"><i class="fa fa-user"></i>Total Empleados</span>
+ <div class="count"><%=@total_cliente%></div>
+ <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><%=@porcentaje_clien%>%</i>Mes pasado</span>
+ </div>
+<div class="col-md-2 col-sm-2 col-xs-6 tile_stats_count">
+ <span class="count_top"><i class="fa fa-credit-card"></i>Total Tarjetas activas</span>
+ <div class="count"><%=@total_tajetas_ac%></div>
+ <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><%=@porcentaje_ta%>%</i>Mes pasado</span>
+ </div>
+ <div class="col-md-2 col-sm-2 col-xs-6 tile_stats_count">
+ <span class="count_top"><i class="fa fa-dollar"></i>Total en cuenta</span>
+ <div class="count">0</div>
+ <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0.0%</i>Mes pasado</span>
+ </div>
+ <div class="col-md-2 col-sm-2 col-xs-6 tile_stats_count">
+ <span class="count_top"><i class="fa fa-dollar"></i>Total Prestamos activos</span>
+ <div class="count"><%=@total_pagos%></div>
+ <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><%=@porcentaje_pagos%>%</i>Mes pasado</span>
+ </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,7 @@
+$("#loan_net_salary").val("<%=@employee.net_monthly_salary.to_i%>")
+$("#loan_max_credit").val("<%=@employee.net_monthly_salary.to_i * 30 / 100%>")
+$("#loan_id").val("<%=@employee.company_id.to_i%>")
+//$("#loan_capital_to_pay").val(y)
+$("#loan_status").val("<%= nuevo = "Pre Aprovado" %>")
+//$("#loan_balance").val("<%=((@employee.net_monthly_salary.to_f)*(30*@employee.net_monthly_salary.to_f/100)).round(2) - (@employee.net_monthly_salary.to_i)%>")
+//$("#loan_balance").val("<%=(@employee.net_monthly_salary.to_i * 30 / 100)%>"-y)

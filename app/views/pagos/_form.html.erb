@@ -1,0 +1,76 @@
+
+<%= form_for(@pago) do |f| %>
+
+
+      
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @pago.errors[:monto_pago].any? ? " error" : "" %>">
+    <%= f.label :monto_pago, 'Monto del Pago' %>
+    <br>
+    <div class="controls">
+    <%= f.text_field :monto_pago, :class=>"form-control" %>
+    <span class="help-inline">    
+    <%= @pago.errors[:monto_pago].any? ? @pago.errors[:monto_pago].to_s[/\w([^"]*)/] : "" %>
+    </span>
+    </div>
+    </div>   
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+
+    <div class="control-group<%= @pago.errors[:interes].any? ? " error" : "" %>">
+    <%= f.label :interes, 'Interes' %><br>
+    <div class="controls">
+    <%= f.text_field :interes, :class=>"form-control" %>
+    <span class="help-inline">
+      <%= @pago.errors[:interes].any? ? @pago.errors[:interes].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>
+    </div>
+    
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+
+    <div class="control-group<%= @pago.errors[:iva_sobre_interes].any? ? " error" : "" %>">
+    <%= f.label :iva_sobre_interes,'Iva/Interes ' %><br>
+    <div class="controls">
+    <%= f.text_field :iva_sobre_interes, :class=>"form-control" %>
+    <span class="help-inline">
+      <%= @pago.errors[:iva_sobre_interes].any? ? @pago.errors[:iva_sobre_interes].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+
+    <div class="control-group<%= @pago.errors[:total].any? ? " error" : "" %>">
+    <%= f.label :total,'Total' %><br>
+    <div class="controls">
+    <%= f.text_field :total, :class=>"form-control" %>
+    <span class="help-inline">
+      <%= @pago.errors[:total].any? ? @pago.errors[:total].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+
+    <div class="control-group<%= @pago.errors[:status_pago].any? ? " error" : "" %>">
+    <%= f.label :status_pago, 'Status' %><br>
+    <div class="controls">
+    <%=f.select :status_pago, [['Aplicado', "Aplicado"], ['Pendiente', "Pendiente"]],{ :include_blank => true}, { :class=>"form-control"}%>
+    <span class="help-inline">    
+    <%= @pago.errors[:status_pago].any? ? @pago.errors[:status_pago].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+    <br>
+    <%= f.submit 'Guardar', :class=>"btn btn-success" %>
+    </div>
+
+  </div>
+  </div>
+</div>    
+<% end %>
+

@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Numero de Trajeta</th>
+    <th>Fecha de Expedición</th>
+    <th>Emisor</th>
+    <th>Status</th>
+  </tr>
+   <% @card.each do |product| %>
+  <tr>
+    <td><%= product.cardNumber %></td>
+    <td><%= product.expDate %></td>
+    <td><%= product.emisor %></td>
+    <td><%= product.statuss %></td>
+  </tr>
+  <% end %>
+</table>

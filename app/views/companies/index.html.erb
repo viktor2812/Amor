@@ -1,0 +1,57 @@
+
+ <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Listar Empresa </h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to 'Nueva Empresa', new_company_path %>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+
+     <div class="x_content">
+    <table id="datatable-buttons" class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Sub-Empresa</th>
+        <th>Esquema de pagos</th>
+        <th>Nombre del contacto</th>
+        <th>Email del contacto</th>
+        <th>Teléfono del contacto</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @companies.each do |company| %>
+          <tr>
+            <td><%= company.company_name %></td>
+            <td><%= company.sub_company %></td>
+            <td><%= company.payment_schema %></td>
+            <td><%= company.contact_name %> <%= company.contact_p_last_name %> <%= company.contact_m_last_name %></td>
+            <td><%= company.contact_email %></td>
+            <td><%= company.contact_telephone %></td>
+            <td><%= link_to 'Ver', company,:class => 'green' %></td>
+            <td><%= link_to 'Eliminar', company,:class => 'red', method: :delete, data: { confirm: '¿Estas seguro que deseas eliminar la empresa?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @companies %>
+  <%= link_to 'Nueva empresa', new_company_path, :class=>"btn btn-primary" %>
+</div>
+</div>
+</div>
+</div>

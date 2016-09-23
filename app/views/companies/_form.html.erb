@@ -1,0 +1,269 @@
+<%= form_for(@company) do |f| %>
+
+ <h2>Empresa</h2>
+ <div class="x_title">
+</div>
+<br>
+    
+   <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:company_name].any? ? " error" : "" %>">
+      <%= f.label :company_name, 'Empresa' %><br>
+      <div class="controls">
+      <%= f.text_field :company_name, :class=>"form-control" %>
+       <span class="help-inline">    
+          <%= @company.errors[:company_name].any? ? @company.errors[:company_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+     <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:sub_company].any? ? " error" : "" %>">
+      <%= f.label :sub_company, 'Sub-empresa' %><br>
+      <div class="controls">
+      <%= f.text_field :sub_company, :class=>"form-control" %>
+      <span class="help-inline">    
+          <%= @company.errors[:sub_company].any? ? @company.errors[:sub_company].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+
+ <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:rfc_company].any? ? " error" : "" %>"> 
+    <%= f.label :rfc_company, 'RFC' %><br>
+   <div class="controls">
+    <%= f.text_field :rfc_company, :class=>"form-control", :style => "text-transform: uppercase"%>
+ <span class="help-inline">    
+  <%= @company.errors[:rfc_company].any? ? @company.errors[:rfc_company].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+
+ <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:street].any? ? " error" : "" %>"> 
+    <%= f.label :street, 'Calle' %><br>
+   <div class="controls">
+    <%= f.text_field :street, :class=>"form-control", :style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+  <%= @company.errors[:street].any? ? @company.errors[:street].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:num_out].any? ? " error" : "" %>"> 
+    <%= f.label :num_out, 'Número exterior' %><br>
+   <div class="controls">
+    <%= f.text_field :num_out, :class=>"form-control" %>
+ <span class="help-inline">    
+  <%= @company.errors[:num_out].any? ? @company.errors[:num_out].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:num_int].any? ? " error" : "" %>"> 
+    <%= f.label :num_int, 'Número interior' %><br>
+   <div class="controls">
+    <%= f.text_field :num_int, :class=>"form-control"%>
+ <span class="help-inline">    
+  <%= @company.errors[:num_int].any? ? @company.errors[:num_int].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:location].any? ? " error" : "" %>"> 
+    <%= f.label :location, 'localidad' %><br>
+   <div class="controls">
+    <%= f.text_field :location, :class=>"form-control"%>
+ <span class="help-inline">    
+  <%= @company.errors[:location].any? ? @company.errors[:location].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:delegation].any? ? " error" : "" %>"> 
+    <%= f.label :delegation, 'Delegación/Municipio' %><br>
+   <div class="controls">
+    <%= f.text_field :delegation, :class=>"form-control", :style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+  <%= @company.errors[:delegation].any? ? @company.errors[:delegation].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:city].any? ? " error" : "" %>"> 
+    <%= f.label :city, 'Ciudad' %><br>
+   <div class="controls">
+    <%= f.text_field :city, :class=>"form-control", :style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+  <%= @company.errors[:city].any? ? @company.errors[:city].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @company.errors[:cp].any? ? " error" : "" %>"> 
+    <%= f.label :cp, 'Código Postal' %><br>
+   <div class="controls">
+    <%= f.text_field :cp, :class=>"form-control"%>
+ <span class="help-inline">    
+  <%= @company.errors[:cp].any? ? @company.errors[:cp].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>      
+    </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+ <div class="control-group<%= @company.errors[:payment_schema].any? ? " error" : "" %>">
+  <%= f.label :payment_schema, 'Esquema pagos' %><br>
+ <div class="controls">
+<%=f.select :payment_schema, [['Diario', "Diario"], ['Semanal', "Semanal"], ['Quincenal', "Quincenal"], ['Mensual', "Mensual"]], {}, { :class=>"form-control"}%>
+ <span class="help-inline">    
+          <%= @company.errors[:payment_schema].any? ? @company.errors[:payment_schema].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+ <div class="clearfix"></div>
+ <h2>Representante legal</h2>
+ <div class="x_title"></div>
+ <br>
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:agent_name].any? ? " error" : "" %>">    
+      <%= f.label :agent_name, 'Nombre' %><br>
+<div class="controls">      
+      <%= f.text_field :agent_name, :class=>"form-control" ,:style => "text-transform: capitalize" %>
+ <span class="help-inline">    
+          <%= @company.errors[:agent_name].any? ? @company.errors[:agent_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:agent_p_last_name].any? ? " error" : "" %>">    
+      <%= f.label :agent_p_last_name, 'Apellido paterno' %><br>
+<div class="controls">      
+      <%= f.text_field :agent_p_last_name, :class=>"form-control" ,:style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+          <%= @company.errors[:agent_p_last_name].any? ? @company.errors[:agent_p_last_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:agent_m_last_name].any? ? " error" : "" %>">    
+      <%= f.label :agent_m_last_name, 'Apellido materno' %><br>
+<div class="controls">      
+      <%= f.text_field :agent_m_last_name, :class=>"form-control" ,:style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+          <%= @company.errors[:agent_m_last_name].any? ? @company.errors[:agent_m_last_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:agent_email].any? ? " error" : "" %>">    
+      <%= f.label :agent_email, 'Email' %><br>
+<div class="controls">      
+      <%= f.text_field :agent_email, :class=>"form-control" %>
+ <span class="help-inline">    
+          <%= @company.errors[:agent_email].any? ? @company.errors[:agent_email].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:agent_telephone].any? ? " error" : "" %>">    
+      <%= f.label :agent_telephone, 'Télefono' %><br>
+<div class="controls">      
+      <%= f.text_field :agent_telephone, :class=>"form-control" %>
+ <span class="help-inline">    
+          <%= @company.errors[:agent_telephone].any? ? @company.errors[:agent_telephone].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:rfc_agent].any? ? " error" : "" %>">    
+      <%= f.label :rfc_agent, 'RFC' %><br>
+<div class="controls">      
+      <%= f.text_field :rfc_agent, :class=>"form-control" ,:style => "text-transform: uppercase" %>
+ <span class="help-inline">    
+          <%= @company.errors[:rfc_agent].any? ? @company.errors[:rfc_agent].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+<div class="clearfix"></div>
+ <h2>Contacto</h2>
+ <div class="x_title"></div>
+ <br>
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:contact_name].any? ? " error" : "" %>">    
+      <%= f.label :contact_name, 'Nombre' %><br>
+<div class="controls">      
+      <%= f.text_field :contact_name, :class=>"form-control" ,:style => "text-transform: capitalize" %>
+ <span class="help-inline">    
+          <%= @company.errors[:contact_name].any? ? @company.errors[:contact_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:contact_p_last_name].any? ? " error" : "" %>">    
+      <%= f.label :contact_p_last_name, 'Apellido paterno' %><br>
+<div class="controls">      
+      <%= f.text_field :contact_p_last_name, :class=>"form-control" ,:style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+          <%= @company.errors[:contact_p_last_name].any? ? @company.errors[:contact_p_last_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+<div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:contact_m_last_name].any? ? " error" : "" %>">
+      <%= f.label :contact_m_last_name, 'Apellido materno' %><br>
+<div class="controls">
+      <%= f.text_field :contact_m_last_name, :class=>"form-control" ,:style => "text-transform: capitalize"%>
+ <span class="help-inline">    
+          <%= @company.errors[:contact_m_last_name].any? ? @company.errors[:contact_m_last_name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:contact_email].any? ? " error" : "" %>">
+      <%= f.label :contact_email, 'Email' %><br>
+      <div class="controls">
+      <%= f.text_field :contact_email, :class=>"form-control" %>
+       <span class="help-inline">    
+          <%= @company.errors[:contact_email].any? ? @company.errors[:contact_email].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @company.errors[:contact_telephone].any? ? " error" : "" %>">    
+      <%= f.label :contact_telephone, 'Teléfono' %><br>
+<div class="controls">      
+      <%= f.text_field :contact_telephone, :class=>"form-control" %>
+ <span class="help-inline">    
+          <%= @company.errors[:contact_telephone].any? ? @company.errors[:contact_telephone].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>      
+    </div>
+
+
+ <h2></h2>
+  <div class="clearfix"></div>
+     <div class="actionBar">
+      <%= f.submit 'Guardar', :class=>"btn btn-success" %>
+</div>
+<% end %>

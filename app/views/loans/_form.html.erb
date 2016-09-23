@@ -1,0 +1,232 @@
+<div class="x_panel" style="height:100%;">
+ 
+    <h2>Nueva solicitud</h2>
+     <div class="x_title"></div>
+    <ul class="nav navbar-right panel_toolbox">
+      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><%= link_to 'Listar Prestamo', loans_path%>
+          </li>
+          <li><%= link_to 'Listar Pagos', pagos_path%>
+          </li>
+        </ul>
+      </li>
+      <li><a class="close-link"><i class="fa fa-close"></i></a>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+
+    <%= form_for @loan, :html => { :class => "form-horizontal loan" } do |f| %>
+
+        <%id_trabajador = params[:format]%>
+        <%if id_trabajador != nil %>
+
+      <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:employee_id].any? ? " error" : "" %>">
+      <%= f.label :employee_id,"Cliente" %>
+      <div class="controls">
+      <%=f.select :employee_id, current_user.companies.map(&:employees).flatten.collect {|p|  ["#{p.first_name} #{p.p_last_name} #{p.m_last_name}", p.id ] if p.id.to_i == id_trabajador.to_i}, {:include_blank => 'Cliente'},{ :class=>"form-control"}%>
+      <span class="help-inline">    
+      <%= @loan.errors[:employee_id].any? ? @loan.errors[:employee_id].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+      <%else%>
+
+      <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:id].any? ? " error" : "" %>">
+       <%= f.label :company_name, "Empresa" %>
+      <div class="controls">
+      <%dato=""%>        
+      <%= f.collection_select(:id, Company.all, :id, :company_name, {:include_blank => "-Seleccionar Empresa-"},{ :class=>"form-control"})%>
+      <span class="help-inline">    
+      <%= @loan.errors[:id].any? ? @loan.errors[:id].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:employee_id].any? ? " error" : "" %>">
+      <%= f.label :employee_id, "Cliente" %>
+      <div class="controls">
+      <%=f.select :employee_id, current_user.companies.map(&:employees).flatten.collect {|p|  ["#{p.first_name} #{p.p_last_name} #{p.m_last_name}", p.id ]}, { :include_blank => "-Seleccionar Cliente-"}, { :class=>"form-control"}%>
+      <span class="help-inline">    
+      <%= @loan.errors[:employee_id].any? ? @loan.errors[:employee_id].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+        <%end%>
+
+
+      <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:net_salary].any? ? " error" : "" %>">
+     <%= f.label :net_salary,"Salario" %>
+      <div class="controls">
+      <%= f.text_field :net_salary, :class => 'form-control' %>
+      <span class="help-inline">    
+      <%= @loan.errors[:net_salary].any? ? @loan.errors[:net_salary].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:interest].any? ? " error" : "" %>">
+      <%= f.label :interest, "Comisión de servicio %"%>
+      <br>
+      <div class="controls">
+       <%= f.text_field :interest, :class => 'form-control', :value=>8%>
+      <span class="help-inline">    
+      <%= @loan.errors[:interest].any? ? @loan.errors[:interest].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:max_credit].any? ? " error" : "" %>">
+       <%= f.label :max_credit,"Crédito maximo" %>
+      <br>
+      <div class="controls">
+      <%= f.text_field :max_credit, :class => 'form-control' %>
+      <span class="help-inline">    
+      <%= @loan.errors[:max_credit].any? ? @loan.errors[:max_credit].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:period].any? ? " error" : "" %>">
+           <%= f.label :period, "Periodo" %>
+      <br>
+      <div class="controls">
+      <%= f.text_field :period, :class => 'form-control', :value=>Loan.get_period %>
+      <span class="help-inline">    
+      <%= @loan.errors[:period].any? ? @loan.errors[:period].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:capital_requisition].any? ? " error" : "" %>">
+      <%= f.label :capital_requisition, "Capital de requisición"%>
+      <br>
+      <div class="controls">
+      <%= f.text_field :capital_requisition,:value=>0,placeholder: "No debe ser mayor al credito maximo", :class => 'form-control',:onkeyup => "fAgrega();" %>
+      <span class="help-inline">    
+      <%= @loan.errors[:capital_requisition].any? ? @loan.errors[:capital_requisition].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:capital_to_pay].any? ? " error" : "" %>">
+      <%= f.label :capital_to_pay, "Capital a pagar"%>
+      <br>
+      <div class="controls">
+      <%= f.text_field :capital_to_pay,:value=>0, :class => 'form-control' %>
+      <span class="help-inline">    
+      <%= @loan.errors[:capital_to_pay].any? ? @loan.errors[:capital_to_pay].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:balance].any? ? " error" : "" %>">
+      <%= f.label :balance, "Balance" %>
+      <br>
+      <div class="controls">
+      <%= f.text_field :balance,:value=>0, :class => 'form-control' %>
+      <span class="help-inline">    
+      <%= @loan.errors[:balance].any? ? @loan.errors[:balance].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+       <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:status].any? ? " error" : "" %>">
+      <%= f.label :status, "Status" %>
+      <br>
+      <div class="controls">
+      <%= f.text_field  :status, :class => 'form-control' %>
+      <span class="help-inline">    
+      <%= @loan.errors[:status].any? ? @loan.errors[:status].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+      <div class="control-group<%= @loan.errors[:date_requisition].any? ? " error" : "" %>">
+      <%= f.label :date_requisition, "Fecha de requisición" %>
+      <br>
+      <div class="controls">
+      <br>
+      <%= f.date_select :date_requisition, :class => 'date-picker form-control col-md-7 col-xs-12 active' %>
+      <span class="help-inline">    
+      <%= @loan.errors[:date_requisition].any? ? @loan.errors[:date_requisition].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+      </div>
+      </div>
+
+
+
+   <div class="clearfix"></div>
+     <div class="actionBar">
+      <%= f.submit 'Guardar', :class=>"btn btn-success" %>
+</div>
+
+    <% end %>
+
+  </div>
+</div>
+<script language="javascript">
+function fAgrega()
+{ 
+ if  (document.getElementById("loan_capital_requisition").value == "")
+{ 
+
+document.getElementById("loan_capital_to_pay").value="0"
+document.getElementById("loan_balance").value="0"
+
+
+}else{
+
+x=parseInt(document.getElementById("loan_interest").value)/100*parseInt(document.getElementById("loan_capital_requisition").value)
+y=0.16*x
+z= x+y
+document.getElementById("loan_capital_to_pay").value=parseInt(document.getElementById("loan_capital_requisition").value)+z
+
+}
+}
+
+</script>
+
+ <script type="text/javascript">
+      $(document).ready(function(){
+        $("#loan_employee_id").change(function(){
+          id = $(this).val();
+          $.ajax({
+            url: "/employees/"+id+"/net_salary",
+          })
+        })
+      })
+ </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#loan_id").change(function(){
+          id = $(this).val();
+          $.ajax({
+            url: "/companies/"+id+"/ciclo_pago",
+          })
+        })
+      })
+    </script>
+
+
+
+

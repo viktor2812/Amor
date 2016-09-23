@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "PayDayLoan | OpenFlow" %> </title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Bootstrap -->
+    <!--link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"-->
+    <!-- Font Awesome -->
+    <!--link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet"-->
+    <!-- iCheck -->
+    <!--link href="../vendor/iCheck/skins/flat/green.css" rel="stylesheet"-->
+    <!-- Datatables -->
+    <!--link href="../vendor/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet"-->
+    <!--link href="../vendor/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet"-->
+    <!--link href="../vendor/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet"-->
+    <!--link href="../vendor/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet"-->
+    <!--link href="../vendor/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet"-->
+
+    <!-- Custom Theme Style -->
+    <!--link href="../build/css/custom.min.css" rel="stylesheet"-->
+
+<body class="nav-md">
+  <div class="container body">
+    <% flash.each do |key, value| %>
+        <div align="center" id="flash" class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+
+    <%= render "partials/sidenav" %>
+    <%= render "partials/topnav" %>
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /page content -->
+
+    <%= render "partials/footer" %>
+    <%= javascript_include_tag 'footermanifest', 'data-turbolinks-track' => true %>
+  </div>
+
+</body>
+</html>

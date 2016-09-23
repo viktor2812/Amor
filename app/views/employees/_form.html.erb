@@ -1,0 +1,230 @@
+<%= form_for(@employee) do |f| %>
+ <h2>Empleado</h2>
+ <div class="x_title">
+</div>
+<br>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:first_name].any? ? " error" : "" %>">
+    <%= f.label :first_name, 'Nombre' %><br>
+  <div class="controls">
+    <%= f.text_field :first_name, :class=>"form-control" ,:style => "text-transform: capitalize" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:first_name].any? ? @employee.errors[:first_name].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:p_last_name].any? ? " error" : "" %>">
+    <%= f.label :p_last_name, 'Apellido paterno' %><br>
+    <div class="controls">
+    <%= f.text_field :p_last_name, :class=>"form-control" ,:style => "text-transform: capitalize"%>
+  <span class="help-inline">    
+    <%= @employee.errors[:p_last_name].any? ? @employee.errors[:p_last_name].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:m_last_name].any? ? " error" : "" %>">
+    <%= f.label :m_last_name, 'Apellido materno' %><br>
+    <div class="controls">
+    <%= f.text_field :m_last_name, :class=>"form-control", :style => "text-transform: capitalize" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:m_last_name].any? ? @employee.errors[:m_last_name].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:curp].any? ? " error" : "" %>">
+    <%= f.label :curp, 'CURP' %><br>
+    <div class="controls">
+    <%= f.text_field :curp, :class=>"form-control",:style => "text-transform: uppercase" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:curp].any? ? @employee.errors[:curp].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:mobile_number].any? ? " error" : "" %>">
+    <%= f.label :mobile_number, 'Número de celular' %><br>
+    <div class="controls">
+    <%= f.text_field :mobile_number, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:mobile_number].any? ? @employee.errors[:mobile_number].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+ <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:phone].any? ? " error" : "" %>">
+    <%= f.label :phone, 'Telefono fijo' %><br>
+    <div class="controls">
+    <%= f.text_field :phone, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:phone].any? ? @employee.errors[:phone].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:place_birth].any? ? " error" : "" %>">
+    <%= f.label :place_birth, 'Lugar de nacimiento' %><br>
+    <div class="controls">
+    <%= f.text_field :place_birth, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:place_birth].any? ? @employee.errors[:place_birth].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:birthdate].any? ? " error" : "" %>">
+    <%= f.label :birthdate, 'Fecha de nacimiento' %><br>
+    <div class="controls">
+    <%= f.date_select :birthdate, :start_year => 1950, :last_year => 2016, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:birthdate].any? ? @employee.errors[:birthdate].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="clearfix"></div>
+ <h2>Detalle del empleado</h2>
+<div class="x_title"></div> 
+ <br>
+
+ <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:company_id].any? ? " error" : "" %>">
+    <%= f.label :company_id, 'Empresa' %><br>
+    <div class="controls">
+    <%=f.select :company_id, current_user.companies.all.collect {|p| [ p.company_name, p.id ] }, { :include_blank => '-Seleccionar empresa-'}, { :class=>"form-control"}%>
+  <span class="help-inline">    
+    <%= @employee.errors[:company_id].any? ? @employee.errors[:company_id].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+ 
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:brut_monthly_salary].any? ? " error" : "" %>">
+    <%= f.label :brut_monthly_salary, 'Salario bruto' %><br>
+    <div class="controls">
+    <%= f.text_field :brut_monthly_salary, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:brut_monthly_salary].any? ? @employee.errors[:brut_monthly_salary].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:net_monthly_salary].any? ? " error" : "" %>">
+    <%= f.label :net_monthly_salary, 'Salario neto' %><br>
+    <div class="controls">
+    <%= f.text_field :net_monthly_salary, :class=>"form-control", :onkeyup => "fAgrega();" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:net_monthly_salary].any? ? @employee.errors[:net_monthly_salary].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:employee_key].any? ? " error" : "" %>">
+    <%= f.label :employee_key, 'CLABE' %><br>
+    <div class="controls">
+    <%= f.text_field :employee_key, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:employee_key].any? ? @employee.errors[:employee_key].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:payment_cycle].any? ? " error" : "" %>">
+    <%= f.label :payment_cycle, 'Ciclo de pago' %><br>
+    <div class="controls">
+    <%=f.select :payment_cycle, [['Diario', "Diario"], ['Semanal', "Semanal"], ['Quincenal', "Quincenal"], ['Mensual', "Mensual"]], {}, { :class=>"form-control"}%>
+  <span class="help-inline">    
+    <%= @employee.errors[:payment_cycle].any? ? @employee.errors[:payment_cycle].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:card_id].any? ? " error" : "" %>">
+    <%= f.label :card_id, 'Tarjeta' %><br>
+    <div class="controls">
+    <%=f.select :card_id, Card.all.collect {|p| [ p.cardNumber, p.id ] }, { :include_blank => '-Seleccionar tarjeta-'}, { :class=>"form-control"}%>
+  <span class="help-inline">    
+    <%= @employee.errors[:card_id].any? ? @employee.errors[:card_id].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:disponible].any? ? " error" : "" %>">
+    <%= f.label :disponible, 'Disponibilidad' %><br>
+    <div class="controls">
+    <%= f.text_field :disponible, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:disponible].any? ? @employee.errors[:disponible].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:credit_line].any? ? " error" : "" %>">
+    <%= f.label :credit_line, 'Linea de credito' %><br>
+    <div class="controls">
+    <%= f.text_field :credit_line, :class=>"form-control"%>
+  <span class="help-inline">    
+    <%= @employee.errors[:credit_line].any? ? @employee.errors[:credit_line].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:activation_code].any? ? " error" : "" %>">
+    <%= f.label :activation_code, 'Código de activación' %><br>
+    <div class="controls" >
+    <%= f.text_field :activation_code, :class=>"form-control"%>
+  <span class="help-inline">    
+    <%= @employee.errors[:activation_code].any? ? @employee.errors[:activation_code].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+  <div class="control-group<%= @employee.errors[:admission_date].any? ? " error" : "" %>">
+    <%= f.label :admission_date, 'Fecha admisión' %><br>
+    <div class="controls">
+    <%= f.date_select :admission_date, :class=>"form-control" %>
+  <span class="help-inline">    
+    <%= @employee.errors[:admission_date].any? ? @employee.errors[:admission_date].to_s[/\w([^"]*)/] : "" %></span>
+  </div>
+  </div>
+  </div>
+
+
+<br>
+ <div class="clearfix"></div>
+     <div class="actionBar">
+      <%= f.submit 'Guardar', :class=>"btn btn-success" %>
+</div>
+<% end %>
+
+
+
+<script language="javascript">
+function fAgrega()
+{
+document.getElementById("employee_credit_line").value = document.getElementById("employee_net_monthly_salary").value*0.30;
+}
+</script>

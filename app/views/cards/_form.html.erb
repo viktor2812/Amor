@@ -1,0 +1,58 @@
+
+<%= form_for(@card) do |f| %>
+<br>
+ 
+  <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @card.errors[:cardNumber].any? ? " error" : "" %>">
+      <%= f.label :cardNumber, 'Número de tarjeta' %>
+      <br>
+        <div class="controls">
+          <%= f.text_field :cardNumber, :class=>"form-control" %>
+          <span class="help-inline">    
+          <%= @card.errors[:cardNumber].any? ? @card.errors[:cardNumber].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+     
+    <div class="col-md-5 col-sm-6 col-xs-19 form-group">
+    <div class="control-group<%= @card.errors[:emisor].any? ? " error" : "" %>">
+    <%= f.label :emisor,:class => 'control-label' %><br>
+    <div class="controls">
+    <%= f.text_field :emisor, :class=>"form-control" %>
+    <span class="help-inline">
+      <%= @card.errors[:emisor].any? ? @card.errors[:emisor].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>
+    </div>
+
+   
+    <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @card.errors[:statuss].any? ? " error" : "" %>">
+    <%= f.label :status,:class => 'control-label' %><br>
+    <div class="controls">
+    <%=f.select :statuss, [['Desactivada', "0"], ['Asignada', "1"], ['Activada', "2"], ['Cancelada', "3"]], {}, { :class=>"form-control"}%>
+    <span class="help-inline">
+      <%= @card.errors[:statuss].any? ? @card.errors[:statuss].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+    </div>
+    </div>
+ <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+    <div class="control-group<%= @card.errors[:expDate].any? ? " error" : "" %>">
+      <%= f.label :expDate, 'Fecha de expedición' %>
+        <div class="controls">
+          <%= f.date_select :expDate, :start_year => 2016, :class=>"form-control" %>
+          <span class="help-inline">    
+          <%= @card.errors[:expDate].any? ? @card.errors[:expDate].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+    </div>
+
+    
+    
+    <div class="col-md-4 form-group">
+    <br>
+    <%= f.submit 'Guardar', :class=>"btn btn-success" %>
+    </div>
+  
+<% end %>

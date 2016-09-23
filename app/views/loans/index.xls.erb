@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Número de Trajeta</th>
+    <th>Capital de requisición</th>
+    <th>Credito</th>
+    <th>Fecha de  requisición</th>
+    <th>Capital al pagar</th>
+    <th>Status</th>
+  </tr>
+   <% @loan.each do |product| %>
+  <tr>
+<td><%= product.employee.first_name %> </td>
+    <td><%= product.capital_requisition %></td>
+    <td><%= product.max_credit %></td>
+    <td><%= product.date_requisition%></td>
+    <td><%= product.capital_to_pay %></td>
+    <td><%= product.status %></td>
+  </tr>
+  <% end %>
+</table>

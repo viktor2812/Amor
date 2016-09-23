@@ -1,0 +1,59 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="x_panel" style="height:100%;">
+  <div class="x_title">
+    <h2>Prestamos</h2>
+    <ul class="nav navbar-right panel_toolbox">
+      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <%= link_to 'Nueva solicitud de Prestamos', new_loan_path %>
+          </li>
+          <li>
+            <%= link_to 'Listar Pagos', pagos_path%>
+          </li>
+        </ul>
+      </li>
+      <li><a class="close-link"><i class="fa fa-close"></i></a>
+      </li>
+    </ul>
+
+  <table id="datatable-buttons" class="table table-striped table-bordered" style="text-align:center">
+   <thead>
+      <tr>
+        <th>Capital de requisición </th>
+        <th>Credito</th>
+        <th>Fecha de requisición</th>
+        <th>Capital a pagar</th>
+        <th>Status</t
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @loan.each do |x| %>
+          <tr>
+              <td><%= x.capital_requisition %></td>
+               <td><%= x.max_credit %></td>
+              <td><%= x.date_requisition %></td>
+               <td><%= x.capital_to_pay %></td>
+              <td><%= x.status %></td>
+              
+            <td><%= link_to 'Ver', x, :class => 'green' %></td>
+            <td><%= link_to 'Pagos', pagos_path, :class => 'blue' %></td>
+          </tr>
+      <% end %>
+      </tbody>
+  </table>
+<div class="ln_solid"></div>
+<div class="dt-buttons btn-group">
+  <%= link_to t('.EXCEL', :default => t("helpers.links.EXCEL")),  loans_path(format: "xls"),:class => 'btn btn-primary'  %>  
+  </div>
+  <br>
+
+<div class="ln_solid"></div>
+  <%= link_to 'Nuevo prestamo', new_loan_path, :class=>"btn btn-primary" %>
+</div>
+</div>
+</div>
